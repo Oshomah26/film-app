@@ -84,7 +84,7 @@ async function displayMovieDetails(){
     const div = document. createElement('div');
     // div.setAttribute('id','movie-details')
 
-    div.innerHTML = `<div id="movie-details">
+    div.innerHTML = `
     <div class="details-top">
       <div>
       ${
@@ -129,7 +129,7 @@ async function displayMovieDetails(){
       <h4>Production Companies</h4>
       <div class="list-group">${movie.production_companies.map((company) => `<span>${company.name}</span>`)}</div>
     </div>
-  </div>`
+  `
 //`
 //     <div>
 //     ${
@@ -183,10 +183,11 @@ document.querySelector('#movie-details').appendChild(div);
 
 function displayBackgroundImage(type, backgroundPath) {
     const overlayDiv = document.createElement('div');
-    overlayDiv.setAttribute('class','details-top')
+    // overlayDiv.classList.add('.details-top');
     overlayDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backgroundPath})`;
     overlayDiv.style.backgroundSize = 'cover';
     overlayDiv.style.backgroundPosition = 'center';
+    overlayDiv.style.backgroundRepeat = 'no-repeat';
     overlayDiv.style.height = '100vh';
     overlayDiv.style.width = '100vw'; 
     overlayDiv.style.postion = 'absolute'; 
