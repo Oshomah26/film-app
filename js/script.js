@@ -82,7 +82,6 @@ async function displayMovieDetails(){
     displayBackgroundImage('movie', movie.backdrop_path);
 
     const div = document. createElement('div');
-    // div.setAttribute('id','movie-details')
 
     div.innerHTML = `
     <div class="details-top">
@@ -127,7 +126,7 @@ async function displayMovieDetails(){
            <li><span class="text-secondary">Status:</span> ${movie.status}</li>
       </ul>
       <h4>Production Companies</h4>
-      <div class="list-group">${movie.production_companies.map((company) => `<span>${company.name}</span>`)}</div>
+      <div class="list-group">${movie.production_companies.map((company) => `<span>${company.name}</span>`).join(',  ')}</div>
     </div>
   `
 //`
@@ -177,13 +176,14 @@ async function displayMovieDetails(){
 // `;
 
 document.querySelector('#movie-details').appendChild(div);
+
+console.log(div);
 }
 
 // Display backdrop on details pages
 
 function displayBackgroundImage(type, backgroundPath) {
     const overlayDiv = document.createElement('div');
-    // overlayDiv.classList.add('.details-top');
     overlayDiv.style.backgroundImage = `url(https://image.tmdb.org/t/p/original/${backgroundPath})`;
     overlayDiv.style.backgroundSize = 'cover';
     overlayDiv.style.backgroundPosition = 'center';
@@ -201,6 +201,7 @@ function displayBackgroundImage(type, backgroundPath) {
     } else {
         document.querySelector('#show-details').appendChild(overlayDiv);
     }
+    console.log(overlayDiv)
 } 
 
 // Fetch data from TMDB API 
