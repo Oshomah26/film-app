@@ -177,7 +177,7 @@ async function displayMovieDetails(){
 
 document.querySelector('#movie-details').appendChild(div);
 
-console.log(div);
+
 }
 
 // Display backdrop on details pages
@@ -203,7 +203,6 @@ function displayBackgroundImage(type, backgroundPath) {
     } else {
         document.querySelector('#show-details').appendChild(overlayDiv);
     }
-    console.log(overlayDiv);
 } 
 
 // Fetch data from TMDB API 
