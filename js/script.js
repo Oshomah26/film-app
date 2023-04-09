@@ -190,18 +190,20 @@ function displayBackgroundImage(type, backgroundPath) {
     overlayDiv.style.backgroundRepeat = 'no-repeat';
     overlayDiv.style.height = '100vh';
     overlayDiv.style.width = '100vw'; 
-    overlayDiv.style.postion = 'absolute'; 
+    overlayDiv.style.position = 'absolute'; 
     overlayDiv.style.top = '0';
     overlayDiv.style.left = '0';
     overlayDiv.style.zIndex = '-1';
     overlayDiv.style.opacity = '0.1';
+
+  
 
     if(type === 'movie') {
         document.querySelector('#movie-details').appendChild(overlayDiv);
     } else {
         document.querySelector('#show-details').appendChild(overlayDiv);
     }
-    console.log(overlayDiv)
+    console.log(overlayDiv);
 } 
 
 // Fetch data from TMDB API 
