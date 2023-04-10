@@ -372,6 +372,34 @@ async function displaySlider(){
   } );
 }
 
+//Display slider Show
+async function displaySliderTV(){
+  const {results} = await fetchAPIData('tv/airing_today');
+
+  results.forEach((show) =>{
+    const div = document.createElement('div');
+    div.classList.add('swiper-slide');
+
+    div.innerHTML = `
+      <a href="movie-details.html?id=${show.id}">
+        <img src="https://image.tmdb.org/t/p/w500${show.poster_path}" alt="${show.name}" />
+      </a>
+      <h4 class="swiper-rating">
+        <i class="fas fa-star text-secondary"></i> ${show.vote_average} / 10
+      </h4>
+      `;
+
+      document.querySelector('.swiper-wrapper').appendChild(div);
+
+      initSwiper();
+  } );
+
+  console.log(results);
+}
+
+
+// Swiper function
+
 function initSwiper() {
   const swiper = new Swiper('.swiper', {
     slidesPerview: 1, 
@@ -395,6 +423,32 @@ function initSwiper() {
     },
   })
 }
+
+// Swiper function
+
+// function initSwiper2() {
+//   const swiper = new Swiper('.swiper', {
+//     slidesPerview: 1, 
+//     spaceBetween: 30,
+//     freeMode: true,
+//     loop: true,
+//     autoplay: {
+//       delay: 4000,
+//       disableOnInteraction: false,
+//     }, 
+//     breakpoints: {
+//       500: {
+//         slidesPerView: 2,
+//       }, 
+//       700: {
+//         slidesPerView: 3,
+//       },
+//       1200: {
+//         slidesPerView: 4,
+//       },
+//     },
+//   })
+// }
 
 // Fetch data from TMDB API 
 async function fetchAPIData(endpoint){
@@ -468,6 +522,7 @@ function init(){
             break;
         case '/film-app/shows.html':
             displayPopularTVshows();
+            displaySliderTV();
             break;
         case '/film-app/movie-details.html':
             displayMovieDetails();
