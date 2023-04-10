@@ -16,8 +16,6 @@ const global = {
 
 async function displayPopularMovies() {
     const {results} = await fetchAPIData('movie/popular');
-    console.log(results);
-
     results.forEach(movie => {
         const div = document.createElement('div');
         div.classList.add('card');
@@ -336,14 +334,14 @@ function displayPagination(){
   // Next page 
   document.querySelector('#next').addEventListener('click', async () => {
     global.search.page++;
-    const {results, total_pages} = await searchAPIData();
+    const {results} = await searchAPIData();
     displaySearchResults(results);
   })
 
   // Previous page 
   document.querySelector('#prev').addEventListener('click', async () => {
     global.search.page--;
-    const {results, total_pages} = await searchAPIData();
+    const {results} = await searchAPIData();
     displaySearchResults(results);
   })
 }
@@ -424,31 +422,6 @@ function initSwiper() {
   })
 }
 
-// Swiper function
-
-// function initSwiper2() {
-//   const swiper = new Swiper('.swiper', {
-//     slidesPerview: 1, 
-//     spaceBetween: 30,
-//     freeMode: true,
-//     loop: true,
-//     autoplay: {
-//       delay: 4000,
-//       disableOnInteraction: false,
-//     }, 
-//     breakpoints: {
-//       500: {
-//         slidesPerView: 2,
-//       }, 
-//       700: {
-//         slidesPerView: 3,
-//       },
-//       1200: {
-//         slidesPerView: 4,
-//       },
-//     },
-//   })
-// }
 
 // Fetch data from TMDB API 
 async function fetchAPIData(endpoint){
