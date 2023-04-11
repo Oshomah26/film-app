@@ -49,7 +49,6 @@ async function displayPopularMovies() {
 // function for displaying popular TV shows
 async function displayPopularTVshows() {
     const {results} = await fetchAPIData('/tv/popular');
-    console.log(results);
 
     results.forEach(tvShow => {
         const div = document.createElement('div');
@@ -391,8 +390,6 @@ async function displaySliderTV(){
 
       initSwiper();
   } );
-
-  console.log(results);
 }
 
 
